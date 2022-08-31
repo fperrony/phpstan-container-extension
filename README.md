@@ -45,3 +45,6 @@ use Psr\Log\LoggerInterface;
 ...
 ```
 
+## License
+All contents of this package are licensed under the [MIT license](https://github.com/webmozarts/assert/blob/master/LICENSE).
+
