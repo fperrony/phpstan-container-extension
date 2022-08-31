@@ -2,6 +2,8 @@
 
 This is an extension for PHPStan extension to resolve return type for PSR-11 container (Psr\Container\ContainerInterface) and Pimple Container (ArrayAccess)
 
+This pacckage based on [phil-nelson/phpstan-container-extension](https://github.com/phil-nelson/phpstan-container-extension)
+
 ## Installation
 
 Install with:
@@ -14,7 +16,7 @@ Add the `extension.neon` file to your PHPStan config:
 
 ```
 includes:
-  - vendor/phil-nelson/phpstan-container-extension/extension.neon
+  - vendor/fcpl/phpstan-container-extension/extension.neon
 ```
 
 Or use [phpstan/extension-installer](https://github.com/phpstan/extension-installer)
