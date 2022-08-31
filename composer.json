@@ -1,22 +1,27 @@
 {
-    "name": "phil-nelson/phpstan-container-extension",
-    "description": "PHPStan extension to resolve return type for PSR-11 container",
+    "name": "fcpl/phpstan-container-extension",
+    "description": "PHPStan extension to resolve return type for PSR-11 container (Psr\\Container\\ContainerInterface) and Pimple Container (ArrayAccess)",
     "type": "phpstan-extension",
     "require": {
         "phpstan/phpstan": "^1.0",
         "psr/container": "^1.0 || ^2.0",
-        "php": "^7.0 || ^8.0"
+        "php": "^7.3 || ^8.0 || ^8.1"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "PhilNelson\\PHPStanContainerExtension\\": "src/"
+            "Fcpl\\PHPStanContainerExtension\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fcpl\\PHPStanContainerExtension\\Tests\\": "tests/"
         }
     },
     "authors": [
         {
-            "name": "Philip Nelson",
-            "email": "philip@whatsbeef.net"
+            "name": "Franklin C. Perrony de Liz",
+            "email": "fperrony@gmail.com"
         }
     ],
     "minimum-stability": "stable",

@@ -1,5 +1,9 @@
 services:
   -
-    class: PhilNelson\PHPStanContainerExtension\ContainerDynamicReturnTypeResolver
+    class: Fcpl\PHPStanContainerExtension\ContainerInterfaceDynamicReturnTypeResolver
+    tags:
+      - phpstan.broker.dynamicMethodReturnTypeExtension
+  -
+    class: Fcpl\PHPStanContainerExtension\ArrayAccessDynamicReturnTypeResolver
     tags:
       - phpstan.broker.dynamicMethodReturnTypeExtension

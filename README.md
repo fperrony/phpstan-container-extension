@@ -1,14 +1,13 @@
-# A PHPStan extension for PSR-11 ContainerInterface
+# A PHPStan extension for PSR-11 ContainerInterface and ArrayAccess. Ex: Pimple\Container
 
-This is an extension for PHPStan when using a PSR-11 ContainerInterface which returns the same type when provided with
-a class string.
+This is an extension for PHPStan extension to resolve return type for PSR-11 container (Psr\Container\ContainerInterface) and Pimple Container (ArrayAccess)
 
 ## Installation
 
 Install with:
 
 ```
-composer require --dev phil-nelson/phpstan-container-extension
+composer require --dev fcpl/phpstan-container-extension
 ```
 
 Add the `extension.neon` file to your PHPStan config:
@@ -19,3 +18,28 @@ includes:
 ```
 
 Or use [phpstan/extension-installer](https://github.com/phpstan/extension-installer)
+
+## Sample
+
+```php
+use Monolog\Handler\HandlerInterface;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use Pimple\Container;
+use Pimple\Psr11\ServiceLocator;
+use Psr\Log\LoggerInterface;
+...
+    $container = new Container();
+    $container->offsetSet(HandlerInterface::class, new StreamHandler($this->getLogFile()));
+    $container->offsetSet(
+        LoggerInterface::class,
+        function (Container $container): Logger {
+            /** @var HandlerInterface $streamHandler */
+            $streamHandler = $container->offsetGet(HandlerInterface::class);
+            return new Logger(self::class, [$streamHandler]);
+        }
+    );
+    return new ServiceLocator($container, [LoggerInterface::class, ConverterFileInterface::class]);
+...
+```
+
